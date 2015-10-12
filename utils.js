@@ -15,6 +15,10 @@ BOT.getCurrentTimestampFormat = function () {
     return "[" + datetime.replaceAt(10, ' ') + "]";
 }
 
+BOT.isMe = function(user) {
+    return BOT.settings.name.toLowerCase() == user.toLowerCase();
+}
+
 BOT.logInfo = function (message) {
     console.log(chalk.yellow.bold("[" + BOT.settings.botname + "] ") + chalk.bgGreen.white.bold(BOT.getCurrentTimestampFormat()) + " " + message);
 }

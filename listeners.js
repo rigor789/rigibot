@@ -3,7 +3,7 @@ BOT.client.addListener('message' + BOT.settings.channel, function (from, message
 
     if (BOT.hasTriggerFor(message)) {
         var message = "/me " + from + " : " + BOT.getTriggerFor(message);
-        if (BOT.settings.name.toLowerCase() == from.toLowerCase()) {
+        if (BOT.isMe(from)) {
             BOT.sayLater(message);
         }
         BOT.say(message);
@@ -16,7 +16,7 @@ BOT.client.addListener('message' + BOT.settings.channel, function (from, message
         var cmd = BOT.getCommand(command);
         if (cmd) {
             BOT.logInfo('executing command: ' + command);
-            if (BOT.settings.name.toLowerCase() == from.toLowerCase()) {
+            if (BOT.isMe(from)) {
                 BOT.runCommandLater(cmd, from, parts.splice(1));
             } else {
                 cmd(from, parts.splice(1));
