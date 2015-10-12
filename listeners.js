@@ -1,6 +1,7 @@
 BOT.client.addListener('message' + BOT.settings.channel, function (from, message) {
     BOT.logMessage('[' + BOT.settings.channel + '] ' + from + ": " + message);
 
+    if (BOT.settings.admins.indexOf(from) == -1) return;
     if (message.charAt(0) == '!') {
         var parts = message.split(' ');
         var command = parts[0].substr(1, parts[0].length);

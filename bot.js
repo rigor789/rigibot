@@ -1,3 +1,4 @@
+require('dotenv').load();
 var irc = require('irc');
 global.BOT = {};
 
@@ -7,8 +8,9 @@ global.BOT = {};
 BOT.settings = {
     name: 'rigitv', // the bots twitch username
     botname: 'rigibot', // the bots name (only for display in console)
-    oauth: 'oauth:asdasdasdasdasdasdasdasd', // the auth token for twitch
-    channel: '#rigitv' // the channel this bot needs to join (ex. #rigitv)
+    oauth: process.env.OAUTH, // the auth token for twitch
+    channel: '#rigitv', // the channel this bot needs to join (ex. #rigitv)
+    admins: ['rigitv'] // people who can use commands.
 };
 
 /**

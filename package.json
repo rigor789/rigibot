@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.1",
+    "dotenv": "^1.2.0",
     "irc": "^0.4.0"
   }
 }
