@@ -2,6 +2,7 @@
   "name": "rigibot",
   "version": "1.0.0",
   "description": "Simple IRC (twitch) bot",
+  "repository": "https://github.com/rigor789/rigibot",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Info: no test specified\" && exit 1"
@@ -11,6 +12,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "dotenv": "^1.2.0",
-    "irc": "^0.4.0"
+    "irc": "^0.4.0",
+    "nconf": "^0.8.2"
   }
 }

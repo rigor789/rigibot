@@ -1,0 +1,12 @@
+module.exports = {
+    'info': function () {
+        BOT.say("I'm a BOT by RigiTv! PogChamp");
+    },
+    'help': function (user) {
+        BOT.say("/me " + user + " here's no help for you son!");
+    },
+    'ping': function () {
+        BOT.say("/me PONG!");
+    },
+    'lines': require('./commands/lines.js')
+}
