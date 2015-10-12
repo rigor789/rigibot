@@ -2,10 +2,17 @@
 
 Simple IRC (twitch) bot written in `Node`.
 
-# Usage
+# Setup
 
-Download the bot (or `git clone` it).
+To set up the bot, clone the repository, and then `cd` into it.
 
-run `npm install` to install dependencies.
+Run `npm install` to install dependencies.
+
+Copy `.env.example` to `.env`.
+
+Edit `.env` with correct information.
+
+
+# Run
 
 To start the bot, type `node bot.js` and the bot should start!
