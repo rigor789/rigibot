@@ -1,6 +1,8 @@
 var fs = require('fs');
 var chalk = require('chalk');
 
+var lastSay = new Date();
+
 BOT.getCommand = function (command) {
     if (BOT.commands.hasOwnProperty(command)) {
         return BOT.commands[command];
@@ -26,8 +28,38 @@ BOT.logMessage = function (message) {
 }
 
 BOT.say = function (message) {
+    var date = new Date();
+    if (date - lastSay < BOT.settings.interval) {
+        return false;
+    }
+    lastSay = date;
     BOT.logInfo("Sending message: " + message);
     BOT.client.say(BOT.settings.channel, message);
+}
+
+BOT.sayLater = function (message) {
+    setTimeout(function () {
+        BOT.say(message);
+    }, BOT.settings.interval);
+}
+
+BOT.runCommandLater = function (cmd, user, args) {
+    setTimeout(function () {
+        cmd(user, args);
+    }, BOT.settings.interval);
+}
+
+BOT.hasTriggerFor = function (message) {
+    for (var trigger in BOT.triggers) {
+        if (BOT.triggers.hasOwnProperty(trigger)) {
+            if (trigger == message.toLowerCase()) return true;
+        }
+    }
+    return false;
+}
+
+BOT.getTriggerFor = function (message) {
+    return BOT.triggers[message.toLowerCase()];
 }
 
 /**

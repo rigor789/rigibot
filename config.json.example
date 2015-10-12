@@ -4,5 +4,9 @@
   "channel": "#rigitv",
   "admins": [
     "rigitv"
-  ]
+  ],
+  "interval": 1100,
+  "triggers": {
+    "How do I sub?": "You don't Kappa"
+  }
 }

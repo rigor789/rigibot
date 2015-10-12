@@ -4,14 +4,16 @@ var nconf = require('nconf');
 
 global.BOT = {};
 
-nconf.file({file: 'config.json'});
+nconf.env().file({file: 'config.json'});
 
 nconf.defaults({
     name: 'rigitv', // the bots twitch username
     botname: 'rigibot', // the bots name (only for display in console)
-    oauth: process.env.OAUTH, // the auth token for twitch
+    oauth: '', // the auth token for twitch
     channel: '#rigitv', // the channel this bot needs to join (ex. #rigitv)
-    admins: ['rigitv'] // people who can use commands.
+    admins: ['rigitv'], // people who can use commands.
+    triggers: {}, // chat triggers
+    interval: 1100 // interval how often the bot can send messages in milliseconds
 });
 
 /**
@@ -20,10 +22,13 @@ nconf.defaults({
 BOT.settings = {
     name: nconf.get('name'),
     botname: nconf.get('botname'),
-    oauth: nconf.get('oauth'),
+    oauth: nconf.get('OAUTH'),
     channel: nconf.get('channel'),
-    admins: nconf.get('admins')
+    admins: nconf.get('admins'),
+    interval: nconf.get('interval')
 };
+
+BOT.triggers = nconf.get("triggers");
 
 /**
  * The commands for this bot!

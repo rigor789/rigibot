@@ -1,6 +1,12 @@
 BOT.client.addListener('message' + BOT.settings.channel, function (from, message) {
     BOT.logMessage('[' + BOT.settings.channel + '] ' + from + ": " + message);
 
+    if (BOT.hasTriggerFor(message)) {
+        if (BOT.settings.name.toLowerCase() == from.toLowerCase()) {
+            BOT.sayLater("/me " + from + " : " + BOT.getTriggerFor(message));
+        }
+    }
+
     if (BOT.settings.admins.indexOf(from) == -1) return;
     if (message.charAt(0) == '!') {
         var parts = message.split(' ');
@@ -9,9 +15,7 @@ BOT.client.addListener('message' + BOT.settings.channel, function (from, message
         if (cmd) {
             BOT.logInfo('executing command: ' + command);
             if (BOT.settings.name.toLowerCase() == from.toLowerCase()) {
-                setTimeout(function () {
-                    cmd(from, parts.splice(1));
-                }, 1200);
+                BOT.runCommandLater(cmd, from, parts.splice(1));
             } else {
                 cmd(from, parts.splice(1));
             }
