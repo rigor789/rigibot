@@ -7,7 +7,13 @@ BOT.client.addListener('message' + BOT.settings.channel, function (from, message
         var cmd = BOT.getCommand(command);
         if (cmd) {
             BOT.logInfo('executing command: ' + command);
-            cmd(from, parts.splice(1));
+            if (BOT.settings.name.toLowerCase() == from.toLowerCase()) {
+                setTimeout(function () {
+                    cmd(from, parts.splice(1));
+                }, 1200);
+            } else {
+                cmd(from, parts.splice(1));
+            }
         }
     }
 
