@@ -2,7 +2,7 @@ BOT.client.addListener('message' + BOT.settings.channel, function (from, message
     BOT.logMessage('[' + BOT.settings.channel + '] ' + from + ": " + message);
 
     if (BOT.hasTriggerFor(message)) {
-        var message = "/me " + from + " : " + BOT.getTriggerFor(message);
+        var message = BOT.getTriggerFor(message).replace("{{name}}", from);
         if (BOT.isMe(from)) {
             BOT.sayLater(message);
         }
