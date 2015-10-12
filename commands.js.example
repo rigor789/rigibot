@@ -8,5 +8,6 @@ module.exports = {
     'ping': function () {
         BOT.say("/me PONG!");
     },
+    'pyramid': require('./commands/pyramid.js'),
     'lines': require('./commands/lines.js')
 }
