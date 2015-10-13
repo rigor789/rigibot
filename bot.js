@@ -13,7 +13,7 @@ nconf.defaults({
     channel: '#rigitv', // the channel this bot needs to join (ex. #rigitv)
     admins: ['rigitv'], // people who can use commands.
     triggers: {}, // chat triggers
-    interval: 1100 // interval how often the bot can send messages in milliseconds
+    isMod: false, // is the bot a mod?
 });
 
 /**
@@ -25,8 +25,25 @@ BOT.settings = {
     oauth: nconf.get('OAUTH'),
     channel: nconf.get('channel'),
     admins: nconf.get('admins'),
-    interval: nconf.get('interval')
+    isMod: nconf.get('isMod')
 };
+
+
+BOT.getRate = function () {
+    if (BOT.settings.isMod) {
+        return BOT.rates.mod;
+    }
+
+    return BOT.rates.default;
+}
+
+BOT.rates = {
+    mod: 100,
+    default: 20,
+    interval: function () {
+        return 30 * 1000 / BOT.getRate();
+    }
+}
 
 BOT.triggers = nconf.get("triggers");
 

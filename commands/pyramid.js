@@ -1,5 +1,5 @@
 module.exports = function (user, args) {
-    if(args.length < 1) {
+    if (args.length < 1) {
         return;
     }
     var emote = args[0];
@@ -9,18 +9,18 @@ module.exports = function (user, args) {
 
     (function f() {
         sendMessage(i, emote)
-        if(descend = (descend || i+1 > width)) {
+        if (descend = (descend || i + 1 > width)) {
             i--;
         } else {
             i++;
         }
-        if( (!descend && i < width+1) || (descend && i > 0) ){
-            setTimeout( f, BOT.settings.interval );
+        if ((!descend && i < width + 1) || (descend && i > 0)) {
+            f();
         }
     })();
 }
 
-var sendMessage = function(times, emote) {
-    var text = Array(times+1).join(emote + " ");
-    BOT.say(text);
+var sendMessage = function (times, emote) {
+    var text = Array(times + 1).join(emote + " ");
+    BOT.say(text, true);
 }

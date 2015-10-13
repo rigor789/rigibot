@@ -5,7 +5,7 @@
   "admins": [
     "rigitv"
   ],
-  "interval": 1100,
+  "isMod": false,
   "triggers": {
     "how do i sub?": "/me You don't sub {{name}}! Kappa"
   }
