@@ -56,7 +56,7 @@ BOT.say = function (message, retryIfFailed) {
         }
 
         BOT.logSuccess("Sending message: " + message);
-        //BOT.client.say(BOT.settings.channel, message);
+        BOT.client.say(BOT.settings.channel, message);
     });
 }
 
