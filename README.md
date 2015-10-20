@@ -22,3 +22,8 @@ Edit `config.json` with correct information.
 # Run
 
 To start the bot, type `node bot.js` and the bot should start!
+
+# Custom Commands
+
+Rigibot has been written in a way, it's really easy to add your own commands!
+
