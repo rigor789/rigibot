@@ -1,9 +1,12 @@
+var defaultWidth = 3;
+var maxWidth = 6;
+
 module.exports = function (user, args) {
     if (args.length < 1) {
         return;
     }
     var emote = args[0];
-    var width = (args[1] < 7 ? args[1] : 6) || 3;
+    var width = (args[1] < maxWidth ? args[1] : maxWidth) || defaultWidth;
     var i = 1;
     var descend = false;
 
