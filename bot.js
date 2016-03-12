@@ -53,11 +53,9 @@ BOT.triggers = nconf.get("triggers");
 BOT.commands = require('./commands.js')
 
 BOT.client = new irc.Client('irc.twitch.tv', BOT.settings.name, {
-    sasl: true,
     nick: BOT.settings.name,
     password: BOT.settings.oauth,
     channels: [BOT.settings.channel],
-    secure: true
 });
 
 require('./listeners.js');
