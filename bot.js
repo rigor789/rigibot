@@ -52,7 +52,8 @@ BOT.triggers = nconf.get("triggers");
  */
 BOT.commands = require('./commands.js')
 
-BOT.client = new irc.Client('irc.twitch.tv', BOT.settings.name, {
+BOT.client = new irc.Client('irc.chat.twitch.tv', BOT.settings.name, {
+    port: 80,
     nick: BOT.settings.name,
     password: BOT.settings.oauth,
     channels: [BOT.settings.channel],
